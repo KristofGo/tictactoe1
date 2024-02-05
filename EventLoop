@@ -83,8 +83,15 @@ public class EventLoop {
 
             } else if (gameState == Constants.GAME_OVER) {
                 if (ui.startNewGame()) {
-
                     state.setGameState(Constants.STANDBY);
+                    state.setXName("");
+                    state.setOName("");
+                    state.setWhoseMove(Constants.X);
+                    for (int clear_row = 0; clear_row < Constants.BOARD_SIZE; clear_row++) {
+                        for (int clear_col = 0; clear_col < Constants.BOARD_SIZE; clear_col++) {
+                            state.setBoardCell(clear_row,clear_col, 0);
+                        }
+                    }
                 } else {
                     state.setGameState(Constants.QUIT_PROGRAM);
                 }
